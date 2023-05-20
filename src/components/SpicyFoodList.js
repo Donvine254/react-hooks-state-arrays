@@ -6,9 +6,13 @@ function SpicyFoodList() {
 
   function handleAddFood() {
     const newFood = getNewRandomSpicyFood();
-    console.log(newFood);
+    const foodExists = foods.some((food) => food.name === newFood.name);
+    if (!foodExists) {
+      // const newFoodArray=structuredClone(foods, newFood);
+      // console.log(newFoodArray);
+      setFoods((prevFoods) => [...prevFoods, newFood]);
   }
-
+  }
   const foodList = foods.map((food) => (
     <li key={food.id}>
       {food.name} | Heat: {food.heatLevel} | Cuisine: {food.cuisine}
